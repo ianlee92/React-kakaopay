@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PayReady from "./PayReady";
+import PayResult from "./PayResult";
+import { BrowserRouter, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      // BrowserRouter가 url에 따라 설정된 컴포넌트를 반환시킨다.
+      <BrowserRouter>
+        <Route path="/" exact={true} component={PayReady} />
+        {/* 결제 승인이 진행될 PayResult를 설정한다. */}
+        <Route path="/payresult" component={PayResult} />
+      </BrowserRouter>
+    );
+  }
 }
-
 export default App;
